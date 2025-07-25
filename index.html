@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            padding: 20px;
+            color: #333;
+        }
+
+        p {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #222;
+            letter-spacing: 1px;
+        }
+
+        .div {
+            display: grid;
+            grid-template-columns: 1fr 200px 100px;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto 20px auto;
+            align-items: center;
+        }
+
+        .inputList,
+        .inputDate {
+            padding: 10px 15px;
+            font-size: 1rem;
+            border: 1.5px solid #ccc;
+            border-radius: 8px;
+            transition: border-color 0.3s ease;
+        }
+
+        .inputList:focus,
+        .inputDate:focus {
+            outline: none;
+            border-color: #4caf50;
+            box-shadow: 0 0 5px #4caf50;
+        }
+
+        .add {
+            background-color: #4caf50;
+            color: white;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .add:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            max-width: 600px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 200px 100px;
+            gap: 15px;
+        }
+
+        .result > div,
+        .result > button {
+            background-color: white;
+            padding: 12px 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .result > div:nth-child(3n + 1) {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .result > div:nth-child(3n + 2) {
+            color: #666;
+            font-style: italic;
+        }
+
+        .delete {
+            background-color: #e74c3c;
+            color: black;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .delete:hover {
+            background-color: #c0392b;
+            color: white;
+        }
+
+        .result > div:hover {
+            background-color: #f0f0f0;
+            transition: background-color 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <p>TodoList</p>
+    <div class="div">
+        <input class="inputList" placeholder="Todo List" />
+        <input class="inputDate" type="date" />
+        <button class="add" onclick="todoListf();">Add</button>
+    </div>
+    <div class="result"></div>
+    <script>
+        let todoList = [
+            { name: 'Obito', dueDate: '2024-07-12' },
+            { name: 'Itachi', dueDate: '2024-04-23' }
+        ];
+
+        todof();
+
+        function todof() {
+            let todoElement = '';
+            for (let i = 0; i < todoList.length; i++) {
+                let todoObject = todoList[i];
+                let { name, dueDate } = todoObject;
+                let html = `<div>${name}</div>
+                            <div>${dueDate}</div>
+                            <button class="delete" onclick="
+                                todoList.splice(${i},1);
+                                todof();
+                            ">Delete</button>`;
+                todoElement += html;
+            }
+            document.querySelector('.result').innerHTML = todoElement;
+        }
+
+        function todoListf() {
+            let inputElement = document.querySelector('.inputList');
+            let name = inputElement.value.trim();
+            if (!name) return;
+
+            let inputElementdate = document.querySelector('.inputDate');
+            let dueDate = inputElementdate.value;
+            todoList.push({ name, dueDate });
+            inputElement.value = '';
+            inputElementdate.value = '';
+            todof();
+        }
+    </script>
+</body>
+</html>
