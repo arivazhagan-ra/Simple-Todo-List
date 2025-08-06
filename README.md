@@ -24,13 +24,4 @@ A simple to-do list web app built using HTML, CSS, and JavaScript. Users can add
 3. Click on a task to mark it as complete.
 4. Use the delete button to remove a task.
 
-## Screenshots
-<!-- You can upload a screenshot and use this format -->
-<!-- ![screenshot](./screenshot.png) -->
 
-## Author
-R. Arivazhagan  
-[GitHub Profile](https://github.com/arivazhagan-ra)
-
-## License
-This project is licensed under the MIT License.
