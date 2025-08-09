@@ -4,7 +4,7 @@
 A simple to-do list web app built using HTML, CSS, and JavaScript. Users can add, complete, and delete tasks. Deployed using Vercel.
 
 ## 🔗 Live Demo
-[Click to view live](https://simple-todo-list.vercel.app/)
+https://simple-todo-list-cyan.vercel.app/
 
 ## Features
 - Add tasks
